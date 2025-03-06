@@ -93,13 +93,5 @@
         venv = pythonSet.mkVirtualEnv "myapp-env" workspace.deps.default;
         package = pythonSet.myapp;
       };
-
-      # Make myapp runnable with `nix run`
-      apps.x86_64-linux = {
-        default = {
-          type = "app";
-          program = "${self.packages.x86_64-linux.default}/bin/myapp";
-        };
-      };
     };
 }
