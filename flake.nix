@@ -68,7 +68,7 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
       # Use Python 3.13 from nixpkgs
-      python = pkgs.python313;
+      python = pkgs.python313Full;
 
       # Construct package set
       pythonSet =
