@@ -10,4 +10,4 @@ wheels/
 .venv
 
 # Output of `nix build`
-result/
+/result
