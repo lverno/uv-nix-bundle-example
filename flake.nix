@@ -84,11 +84,15 @@
             ]
           );
 
+      # Use mkApplication
+      inherit (pkgs.callPackages pyproject-nix.build.util { }) mkApplication;
     in
     {
-      # Package a virtual environment as our main application.
-      # Enable no optional dependencies for production build.
-      packages.x86_64-linux.default = pythonSet.mkVirtualEnv "myapp-env" workspace.deps.default;
+      # Package our main application.
+      packages.x86_64-linux.default = mkApplication {
+        venv = pythonSet.mkVirtualEnv "myapp-env" workspace.deps.default;
+        package = pythonSet.myapp;
+      };
 
       # Make myapp runnable with `nix run`
       apps.x86_64-linux = {
